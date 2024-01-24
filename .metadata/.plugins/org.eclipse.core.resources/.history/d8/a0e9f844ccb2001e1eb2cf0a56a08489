@@ -1,0 +1,11 @@
+package com.springBootwithRestApi.dao;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.springBootwithRestApi.model.Book;
+
+public interface NewBookRepo extends CrudRepository<Book, Integer>{
+
+	Book addBook(Book book);
+
+}

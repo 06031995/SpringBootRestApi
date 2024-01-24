@@ -1,0 +1,77 @@
+package com.springBootwithRestApi.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.springBootwithRestApi.model.Book;
+import com.springBootwithRestApi.service.BookService;
+
+@RestController
+public class BookController {
+	
+	@Autowired
+	private BookService bookservice;
+	
+	/*
+	@GetMapping("/book")
+	public Book getBook() {
+		Book book =new Book();
+		book.setBook_id(1);
+		book.setBook_name("maharana pratap");
+		book.setBook_owner("rahul");
+		return book;
+	}
+	*/
+	
+	// return list
+	/*
+	@GetMapping("/book")
+	public List<Book> getAllBook() {
+		List<Book> allBook = bookservice.getAllBook();
+		return allBook;
+	}
+	*/
+
+	// return object
+	@GetMapping("/book")
+	public Book getAllBook() {
+		Book book = new Book();
+		List<Book> allBook = bookservice.getAllBook();
+		book.setListBook(allBook);
+		return book;
+	}
+	
+	//get Single
+	@GetMapping("/book/{id}")
+	public Book getBookById(@PathVariable("id") int id) {
+		Book bookById = bookservice.getBookById(id);
+		return bookById;
+	}
+	
+	//post data
+	@PostMapping("/book")
+	public Book addBook(@RequestBody Book book) {
+		//@RequestBody - convert json into book oject
+		 Book book2 = bookservice.addBook(book);
+		return book2;
+	}
+	
+	//delete By id
+	@DeleteMapping("book/{id}")
+	public String deleteById(@PathVariable("id") int id) {
+		String deleteById = bookservice.deleteById(id);
+		return deleteById;
+	}
+  
+}

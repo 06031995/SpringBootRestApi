@@ -1,0 +1,26 @@
+package com.springBootwithRestApi.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.springBootwithRestApi.dao.NewBookRepo;
+import com.springBootwithRestApi.model.Book;
+import com.springBootwithRestApi.model.NewBook;
+
+@RestController
+public class NewBookController {
+	
+	@Autowired
+	NewBookRepo bookrepo;
+	
+	//post data
+		@PostMapping("/book")
+		public NewBook addBook(@RequestBody NewBook book) {
+			//@RequestBody - convert json into book oject
+			NewBook book2 = bookrepo.addBook(book);
+			return book2;
+		}
+
+}

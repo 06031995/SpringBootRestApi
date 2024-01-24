@@ -1,0 +1,5 @@
+package com.springBootwithRestApi.dao;
+
+public interface NewBookRepo {
+
+}

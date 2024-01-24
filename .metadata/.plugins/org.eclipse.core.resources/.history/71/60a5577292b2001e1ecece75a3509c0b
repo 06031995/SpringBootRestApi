@@ -1,0 +1,33 @@
+package com.springBootwithRestApi.service;
+
+import java.util.*;
+
+import com.springBootwithRestApi.model.Book;
+
+public class BookService {
+	
+	static List<Book> list = new ArrayList();
+	
+	static {
+		list.add(new Book(2,"java core","james"));
+		list.add(new Book(5,"java advance","james"));
+		list.add(new Book(3,"java spring","james"));
+		list.add(new Book(6,"java boot","james"));
+	}
+	 
+	//get All Book
+	public List<Book> getAllBook(){
+		return list;
+		
+	}
+	
+	//get single book
+	
+	public Book getBookById(int id) {
+		Book book=null;
+	    book = list.stream().filter(i->i.getBook_id()==id).findFirst().get();
+		return book;
+	}
+	
+
+}

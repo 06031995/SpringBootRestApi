@@ -1,0 +1,25 @@
+here only spring web and devtool dependancies
+
+Here rest api exmple
+we use
+@GetMapping
+@PostMapping..etc
+
+
+and create method and hit this url from potman
+we create service for book list 
+
+API
+ 1. localhost:8080/book
+ 2. localhost:8080/book/2
+
+ResponseEntity:
+we Use ResponseEntiTy also
+Http method    url     Valid status code
+POST         /books     201
+GET          /book/{id}  200
+PUT          /book/{id}  200
+DELET        /book/{id}  204
+GET          /book       200,204,206
+
+We Use database also
